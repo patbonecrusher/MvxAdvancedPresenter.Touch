@@ -1,4 +1,4 @@
-// Copyright (C) 20134 Pat Laplante
+// Copyright (C) 2014 Pat Laplante
 //
 // Permission is hereby granted, free of charge, to  any person obtaining a copy 
 // of this software and associated documentation files (the "Software"), to deal 
@@ -25,18 +25,18 @@ using MonoTouch.UIKit;
 namespace MvxAdvancedPresenter.Touch
 {
 	public class SingleViewPresenter : BaseTouchViewPresenter
-    {
-        public SingleViewPresenter () 
-        {
-        }
+	{
+		public SingleViewPresenter () 
+		{
+		}
 
 		public override void ShowFirstView (IMvxTouchView view)
 		{
 			RootViewController = view as UIViewController;
 		}
 
-        public override void Show (IMvxTouchView view)
-        {
-        }
-    }
+		public override void Show (IMvxTouchView view)
+		{
+		}
+	}
 }

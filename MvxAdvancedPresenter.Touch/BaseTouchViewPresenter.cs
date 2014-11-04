@@ -1,4 +1,4 @@
-// Copyright (C) 20134 Pat Laplante
+// Copyright (C) 2014 Pat Laplante
 //
 // Permission is hereby granted, free of charge, to  any person obtaining a copy 
 // of this software and associated documentation files (the "Software"), to deal 
@@ -25,12 +25,12 @@ using MonoTouch.UIKit;
 
 namespace MvxAdvancedPresenter.Touch
 {
-    public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter
-    {
-        public UIViewController RootViewController { get; protected set; }
+	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter
+	{
+		public UIViewController RootViewController { get; protected set; }
 
 		public abstract void ShowFirstView (IMvxTouchView view);
-        public abstract void Show(IMvxTouchView view);
+		public abstract void Show(IMvxTouchView view);
 
 		public virtual void AttachToWindow (UIWindow window)
 		{
@@ -50,8 +50,7 @@ namespace MvxAdvancedPresenter.Touch
 			ShowFirstView(withView);
 			AttachToWindow(inWindow);
 		}
-    }
-    
+	}
 }
 
 //			CustomAnimatedTransition animation = GetPushAnimation(newPresenter.TopViewController);
