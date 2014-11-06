@@ -38,5 +38,9 @@ namespace MvxAdvancedPresenter.Touch
 		public override void Show (IMvxTouchView view)
 		{
 		}
+
+		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
+		{
+		}
 	}
 }

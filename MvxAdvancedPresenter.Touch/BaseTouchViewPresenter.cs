@@ -21,6 +21,7 @@
 // -----------------------------------------------------------------------------
 using Cirrious.MvvmCross.Touch.Views;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
+using Cirrious.MvvmCross.ViewModels;
 using MonoTouch.UIKit;
 
 namespace MvxAdvancedPresenter.Touch
@@ -30,8 +31,21 @@ namespace MvxAdvancedPresenter.Touch
 		public UIViewController RootViewController { get; protected set; }
 
 		public abstract void ShowFirstView (IMvxTouchView view);
-		public abstract void Show(IMvxTouchView view);
+		public virtual void ShowFirstView (MvxViewModelRequest request)
+		{
+			var view = this.CreateViewControllerFor(request);
+			ShowFirstView(view);
+			OnRootControllerCreated();
+		}
 
+		public abstract void Show(IMvxTouchView view);
+		public override void Show(MvxViewModelRequest request)
+		{
+			var view = this.CreateViewControllerFor(request);
+			Show(view);
+		}
+
+		public abstract void Close(IMvxViewModel viewModel);
 		public virtual void AttachToWindow (UIWindow window)
 		{
 			window.RootViewController = RootViewController;
@@ -44,12 +58,24 @@ namespace MvxAdvancedPresenter.Touch
 			RootViewController.RemoveFromParentViewController();
 		}
 
-		public virtual void Present(UIWindow inWindow, IMvxTouchView withView, BaseTouchViewPresenter fromViewPresenter)
+		public virtual void Present(UIWindow inWindow, MvxViewModelRequest withRequest, BaseTouchViewPresenter fromViewPresenter)
 		{
 			if (fromViewPresenter != null) { fromViewPresenter.DetachFromWindow(); }
-			ShowFirstView(withView);
+			ShowFirstView(withRequest);
 			AttachToWindow(inWindow);
 		}
+
+		public override void ChangePresentation (Cirrious.MvvmCross.ViewModels.MvxPresentationHint hint)
+		{
+			// Analysis disable once CanBeReplacedWithTryCastAndCheckForNull
+			if (hint is MvxClosePresentationHint)
+			{
+				Close((hint as MvxClosePresentationHint).ViewModelToClose);
+				return;
+			}
+		}
+
+		protected virtual void OnRootControllerCreated() {}
 	}
 }
 

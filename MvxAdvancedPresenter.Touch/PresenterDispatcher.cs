@@ -24,8 +24,11 @@ using System.Linq;
 using Cirrious.MvvmCross.Touch.Platform;
 using Cirrious.MvvmCross.Touch.Views;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
+using Cirrious.MvvmCross.ViewModels;
 using MonoTouch.UIKit;
 using MvxAdvancedPresenter.Touch.Attributes;
+using Cirrious.CrossCore;
+using Cirrious.MvvmCross.Views;
 
 namespace MvxAdvancedPresenter.Touch
 {
@@ -39,29 +42,42 @@ namespace MvxAdvancedPresenter.Touch
 			_window = window;
 		}
 
-		public void SwapPresenter(BaseTouchViewPresenter newPresenter, IMvxTouchView view) {
+		public void SwapPresenter(BaseTouchViewPresenter newPresenter, MvxViewModelRequest view) {
 			newPresenter.Present(_window, view, CurrentPresenter);
 			CurrentPresenter = newPresenter;
 		}
 
-		public override void Show (Cirrious.MvvmCross.ViewModels.MvxViewModelRequest request)
+		public override void Show (MvxViewModelRequest request)
 		{
-			var view = this.CreateViewControllerFor(request);
-			var presenterFactory = GetPresenter(view);
+			var viewType = Mvx.Resolve<IMvxViewsContainer>().GetViewType(request.ViewModelType);
+			var presenterFactory = GetPresenter(viewType);
 
 			if (presenterFactory != null) {
 				var newPresenter = presenterFactory.CreatePresenter();
-				SwapPresenter(newPresenter, view);
+				SwapPresenter(newPresenter, request);
 			} else {
-				CurrentPresenter.Show(view);
+				// TODO throw up if Current presenter is null
+				CurrentPresenter.Show(request);
 			}
+		}
+
+		public override void ChangePresentation (MvxPresentationHint hint) {
+			if (CurrentPresenter != null) { CurrentPresenter.ChangePresentation (hint); }
+		}
+
+		public override bool PresentModalViewController (UIViewController viewController, bool animated) {
+			return CurrentPresenter != null && CurrentPresenter.PresentModalViewController (viewController, animated);
+		}
+
+		public override void NativeModalViewControllerDisappearedOnItsOwn () {
+			if (CurrentPresenter != null) { CurrentPresenter.NativeModalViewControllerDisappearedOnItsOwn (); }
 		}
 
 		#region Helpers
 
-		private PresenterAttribute GetPresenter(IMvxTouchView view)
+		private PresenterAttribute GetPresenter(Type viewType)
 		{
-			Attribute[] attributes = Attribute.GetCustomAttributes (view.GetType ());
+			Attribute[] attributes = Attribute.GetCustomAttributes (viewType);
 			return (PresenterAttribute) attributes.FirstOrDefault (a => a is PresenterAttribute);
 		}
 

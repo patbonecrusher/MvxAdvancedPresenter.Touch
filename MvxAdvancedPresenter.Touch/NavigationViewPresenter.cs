@@ -39,6 +39,12 @@ namespace MvxAdvancedPresenter.Touch
 			_navViewController.PushViewController(view as UIViewController, true);
 		}
 
+		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
+		{
+			// TODO Add some check to validate we are closing the right view!
+			_navViewController.PopViewControllerAnimated(true);
+		}
+
 		protected virtual UINavigationController CreateNavController(IMvxTouchView view)
 		{
 			return new UINavigationController(view as UIViewController);

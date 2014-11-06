@@ -30,11 +30,7 @@ namespace MvxAdvancedPresenter.Touch
 
 		public override void ShowFirstView (IMvxTouchView view)
 		{
-			_splitViewController = CreateSplitViewController();
-			_splitViewController.ViewControllers = new UIViewController[] {
-				view as UIViewController,
-				new UIViewController()
-			};
+			_splitViewController = CreateSplitViewController(view);
 			RootViewController = _splitViewController;
 		}
 
@@ -43,9 +39,19 @@ namespace MvxAdvancedPresenter.Touch
 			//_splitViewController.PushViewController(view as UIViewController, true);
 		}
 
-		protected virtual UISplitViewController CreateSplitViewController()
+		protected virtual UISplitViewController CreateSplitViewController(IMvxTouchView view)
 		{
-			return new UISplitViewController();
+			UISplitViewController svc = new UISplitViewController();
+			svc.ViewControllers = new UIViewController[] {
+				view as UIViewController,
+				new UIViewController()
+			};
+
+			return svc;
+		}
+
+		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
+		{
 		}
 	}
 }
