@@ -23,11 +23,14 @@ using Cirrious.MvvmCross.Touch.Views;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
 using MonoTouch.UIKit;
+using System;
 
 namespace MvxAdvancedPresenter.Touch
 {
-	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter
+	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter, IDisposable
 	{
+		private bool _disposed = false;
+
 		public UIViewController RootViewController { get; protected set; }
 
 		public abstract void ShowFirstView (IMvxTouchView view);
@@ -74,6 +77,27 @@ namespace MvxAdvancedPresenter.Touch
 				return;
 			}
 		}
+
+		#region IDisposable implementation
+
+		public virtual void Dispose(bool disposing)
+		{
+			if (!_disposed) {
+				if (disposing) { 
+					RootViewController.View.Dispose(); 
+					RootViewController.Dispose(); 
+				}
+				_disposed = true;
+			}
+		}
+
+		public void Dispose ()
+		{
+			Dispose(true);
+			GC.SuppressFinalize(this);
+		}
+
+		#endregion
 
 		protected virtual void OnRootControllerCreated() {}
 	}
