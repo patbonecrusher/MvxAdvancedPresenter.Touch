@@ -6,9 +6,9 @@
     <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{212E8AE0-DA29-47FF-97BC-488321F2450B}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>MvxAdvancedPresenter.Touch</RootNamespace>
+    <RootNamespace>Coc.MvxAdvancedPresenter.Touch</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
-    <AssemblyName>MvxPresenterDispatcher.Touch</AssemblyName>
+    <AssemblyName>Coc.MvxAdvancedPresenters.Touch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>

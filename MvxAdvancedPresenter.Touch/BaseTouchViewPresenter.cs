@@ -26,7 +26,7 @@ using MonoTouch.UIKit;
 using System;
 using MvxAdvancedPresenter.Touch.Transition;
 
-namespace MvxAdvancedPresenter.Touch
+namespace Coc.MvxAdvancedPresenter.Touch
 {
 	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter, IDisposable
 	{

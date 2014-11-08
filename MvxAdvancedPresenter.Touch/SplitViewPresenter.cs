@@ -22,7 +22,7 @@
 using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.UIKit;
 
-namespace MvxAdvancedPresenter.Touch
+namespace Coc.MvxAdvancedPresenter.Touch
 {
 	public class SplitViewPresenter : BaseTouchViewPresenter
 	{

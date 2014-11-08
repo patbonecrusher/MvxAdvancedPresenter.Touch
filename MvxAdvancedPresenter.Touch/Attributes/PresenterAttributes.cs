@@ -22,14 +22,14 @@
 using System;
 using MonoTouch.UIKit;
 
-namespace MvxAdvancedPresenter.Touch.Attributes
+namespace Coc.MvxAdvancedPresenter.Touch.Attributes
 {
 	[AttributeUsage(AttributeTargets.Class)]
 	public class PresenterAttribute : Attribute
 	{
 		public Type PresenterType { get; private set; }
 		public virtual Type TransitionType { get; set; }
-		public virtual bool bla { get; set; }
+		public virtual float Duration { get; set; }
 
 		public PresenterAttribute () { 
 		}
@@ -45,7 +45,7 @@ namespace MvxAdvancedPresenter.Touch.Attributes
 
 				UIViewControllerAnimatedTransitioning transition = null;
 				if (TransitionType != null) {
-					transition = (UIViewControllerAnimatedTransitioning) TransitionType.GetConstructor(new Type[] {}).Invoke(new object[] {});
+					transition = (UIViewControllerAnimatedTransitioning) TransitionType.GetConstructor(new Type[] {typeof(float)}).Invoke(new object[] {Duration});
 				}
 
 				presenter.Transition = transition;

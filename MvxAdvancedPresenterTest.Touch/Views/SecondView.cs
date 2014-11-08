@@ -2,8 +2,8 @@
 using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.CoreGraphics;
 using MonoTouch.UIKit;
-using MvxAdvancedPresenter.Touch;
-using MvxAdvancedPresenter.Touch.Attributes;
+using Coc.MvxAdvancedPresenter.Touch;
+using Coc.MvxAdvancedPresenter.Touch.Attributes;
 using System.Drawing;
 using Cirrious.MvvmCross.Binding.BindingContext;
 
@@ -42,7 +42,7 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 			
 		}
 
-		public override MvxAdvancedPresenter.Touch.BaseTouchViewPresenter CreatePresenter ()
+		public override Coc.MvxAdvancedPresenter.Touch.BaseTouchViewPresenter CreatePresenter ()
 		{
 			BaseTouchViewPresenter presenter = null;
 			if (UIDevice.CurrentDevice.UserInterfaceIdiom == UIUserInterfaceIdiom.Pad) {

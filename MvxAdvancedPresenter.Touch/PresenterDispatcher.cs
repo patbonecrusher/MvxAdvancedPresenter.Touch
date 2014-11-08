@@ -21,16 +21,15 @@
 // -----------------------------------------------------------------------------
 using System;
 using System.Linq;
+using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Touch.Platform;
-using Cirrious.MvvmCross.Touch.Views;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
-using MonoTouch.UIKit;
-using MvxAdvancedPresenter.Touch.Attributes;
-using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Views;
+using MonoTouch.UIKit;
+using Coc.MvxAdvancedPresenter.Touch.Attributes;
 
-namespace MvxAdvancedPresenter.Touch
+namespace Coc.MvxAdvancedPresenter.Touch
 {
 	public class PresenterDispatcher : MvxBaseTouchViewPresenter
 	{

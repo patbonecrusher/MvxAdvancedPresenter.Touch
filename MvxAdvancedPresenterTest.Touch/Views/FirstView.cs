@@ -4,12 +4,12 @@ using Cirrious.MvvmCross.Touch.Views;
 using MonoTouch.Foundation;
 using MonoTouch.ObjCRuntime;
 using MonoTouch.UIKit;
-using MvxAdvancedPresenter.Touch.Attributes;
+using Coc.MvxAdvancedPresenter.Touch.Attributes;
 
 namespace MvxAdvancedPresenterTest.Touch.Views
 {
     [Register("FirstView")]
-	[PresenterAttribute(typeof(MvxAdvancedPresenter.Touch.SingleViewPresenter), TransitionType = typeof(FadeTransition))]
+	[PresenterAttribute(typeof(Coc.MvxAdvancedPresenter.Touch.SingleViewPresenter), TransitionType = typeof(FadeTransition))]
     public class FirstView : MvxViewController
     {
         public override void ViewDidLoad()

@@ -15,7 +15,7 @@ namespace MvxAdvancedPresenterTest.Touch
 		{
 			_window = new UIWindow (UIScreen.MainScreen.Bounds);
 
-			var setup = new Setup(this, new MvxAdvancedPresenter.Touch.PresenterDispatcher (this, _window));
+			var setup = new Setup(this, new Coc.MvxAdvancedPresenter.Touch.PresenterDispatcher (this, _window));
 			setup.Initialize();
 
 			var startup = Mvx.Resolve<IMvxAppStart>();

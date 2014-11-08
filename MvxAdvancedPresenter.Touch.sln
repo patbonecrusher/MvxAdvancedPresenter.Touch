@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvxAdvancedPresenter.Touch", "MvxAdvancedPresenter.Touch\MvxAdvancedPresenter.Touch.csproj", "{212E8AE0-DA29-47FF-97BC-488321F2450B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvxAdvancedPresenterTest.Touch", "MvxAdvancedPresenterTest.Touch\MvxAdvancedPresenterTest.Touch.csproj", "{69451050-7B15-4F79-AD98-BD716ECED338}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvxAdvancedPresenterTestTouch", "MvxAdvancedPresenterTest.Touch\MvxAdvancedPresenterTestTouch.csproj", "{69451050-7B15-4F79-AD98-BD716ECED338}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MvxAdvancedPresenterTest.Core", "MvxAdvancedPresenterTest.Core\MvxAdvancedPresenterTest.Core.csproj", "{1770D526-9EE7-46AD-9657-8FCA258695E5}"
 EndProject
@@ -69,6 +69,6 @@ Global
 		{69451050-7B15-4F79-AD98-BD716ECED338}.Release|iPhoneSimulator.Build.0 = Release|iPhoneSimulator
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
-		StartupItem = MvxAdvancedPresenterTest.Touch\MvxAdvancedPresenterTest.Touch.csproj
+		StartupItem = MvxAdvancedPresenterTest.Touch\MvxAdvancedPresenterTestTouch.csproj
 	EndGlobalSection
 EndGlobal
