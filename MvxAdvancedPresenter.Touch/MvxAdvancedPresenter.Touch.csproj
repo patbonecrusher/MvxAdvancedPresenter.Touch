@@ -73,6 +73,7 @@
   <ItemGroup>
     <Folder Include="Attributes\" />
     <Folder Include="Presenters\" />
+    <Folder Include="Transition\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,6 +83,7 @@
     <Compile Include="SingleViewPresenter.cs" />
     <Compile Include="SplitViewPresenter.cs" />
     <Compile Include="NavigationViewPresenter.cs" />
+    <Compile Include="Transition\ViewControllerContextTransitioning.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>

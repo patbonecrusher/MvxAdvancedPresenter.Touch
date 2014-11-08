@@ -28,20 +28,28 @@ namespace MvxAdvancedPresenter.Touch.Attributes
 	public class PresenterAttribute : Attribute
 	{
 		public Type PresenterType { get; private set; }
-		public UIUserInterfaceIdiom UIIdiom { get; set; }
+		public virtual Type TransitionType { get; set; }
+		public virtual bool bla { get; set; }
 
 		public PresenterAttribute () { 
 		}
 
 		public PresenterAttribute (Type classType) { 
 			PresenterType = classType; 
-			UIIdiom = UIUserInterfaceIdiom.Unspecified;
 		}
 
 		public virtual BaseTouchViewPresenter CreatePresenter()
 		{
 			if (PresenterType != null) {
-				return (BaseTouchViewPresenter) PresenterType.GetConstructor(new Type[] {}).Invoke(new object[] {});
+				BaseTouchViewPresenter presenter = (BaseTouchViewPresenter) PresenterType.GetConstructor(new Type[] {}).Invoke(new object[] {});
+
+				UIViewControllerAnimatedTransitioning transition = null;
+				if (TransitionType != null) {
+					transition = (UIViewControllerAnimatedTransitioning) TransitionType.GetConstructor(new Type[] {}).Invoke(new object[] {});
+				}
+
+				presenter.Transition = transition;
+				return presenter;
 			}
 			return null;
 		}

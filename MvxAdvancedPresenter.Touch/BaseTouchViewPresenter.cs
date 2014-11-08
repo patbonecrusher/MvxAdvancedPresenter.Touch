@@ -24,6 +24,7 @@ using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
 using MonoTouch.UIKit;
 using System;
+using MvxAdvancedPresenter.Touch.Transition;
 
 namespace MvxAdvancedPresenter.Touch
 {
@@ -32,6 +33,7 @@ namespace MvxAdvancedPresenter.Touch
 		private bool _disposed = false;
 
 		public UIViewController RootViewController { get; protected set; }
+		public UIViewControllerAnimatedTransitioning Transition { get; set; }
 
 		public abstract void ShowFirstView (IMvxTouchView view);
 		public virtual void ShowFirstView (MvxViewModelRequest request)
@@ -61,11 +63,27 @@ namespace MvxAdvancedPresenter.Touch
 			RootViewController.RemoveFromParentViewController();
 		}
 
-		public virtual void Present(UIWindow inWindow, MvxViewModelRequest withRequest, BaseTouchViewPresenter fromViewPresenter)
+		public virtual void Present(UIWindow inWindow, MvxViewModelRequest withRequest, BaseTouchViewPresenter fromViewPresenter, Action presented)
 		{
-			if (fromViewPresenter != null) { fromViewPresenter.DetachFromWindow(); }
-			ShowFirstView(withRequest);
-			AttachToWindow(inWindow);
+			ShowFirstView (withRequest);
+
+			UIViewControllerAnimatedTransitioning animation = GetAnimatedTransition ();
+			if (fromViewPresenter != null && animation != null) {
+				ViewControllerContextTransitioning vcTransitionContext = new ViewControllerContextTransitioning (
+					inWindow, fromViewPresenter.RootViewController, RootViewController, () => 
+					{
+						fromViewPresenter.DetachFromWindow ();
+						AttachToWindow (inWindow);
+						presented ();
+					}
+				);
+
+				animation.AnimateTransition (vcTransitionContext);
+				return;
+			}
+			if (fromViewPresenter != null) { fromViewPresenter.DetachFromWindow (); }
+			AttachToWindow (inWindow);
+			presented ();
 		}
 
 		public override void ChangePresentation (Cirrious.MvvmCross.ViewModels.MvxPresentationHint hint)
@@ -100,44 +118,6 @@ namespace MvxAdvancedPresenter.Touch
 		#endregion
 
 		protected virtual void OnRootControllerCreated() {}
+		protected virtual UIViewControllerAnimatedTransitioning GetAnimatedTransition() {return Transition;}
 	}
 }
-
-//			CustomAnimatedTransition animation = GetPushAnimation(newPresenter.TopViewController);
-//			if (CurrentPresenter != null && animated && animation != null) {
-//
-//				ViewControllerContextTransitioning vcTransitionContext = new ViewControllerContextTransitioning(_window, () => {
-//					CurrentPresenter.DetachFromWindow();
-//					newPresenter.AttachToWindow(_window);
-//				}, CurrentPresenter.ContainerViewController, newPresenter.ContainerViewController);
-//				animation.AnimateTransition(vcTransitionContext);
-//			} else {
-//			}
-//		private CustomAnimatedTransition GetPushAnimation(UIViewController view) 
-//		{
-//			Attribute[] attributes = Attribute.GetCustomAttributes (view.GetType ());
-//			PushTransitionAttribute attribute = (PushTransitionAttribute) attributes.FirstOrDefault (a => a is PushTransitionAttribute);
-//			if (attribute == null) return null;
-//
-//			CustomAnimatedTransition transition = GetTransitionOfType<CustomAnimatedTransition>(Type.GetType(attribute.Name));
-//			if (transition != null) {
-//				transition.Duration = attribute.Duration;
-//				return transition;
-//			}
-//
-//			return null;
-//		}
-//
-
-//		public static T GetTransitionOfType<T>(Type t)
-//		{
-//			try
-//			{
-//				return (T) t.GetConstructor(new Type[] {}).Invoke(new object[] {});
-//			}
-//			catch
-//			{
-//				return default(T);
-//			}
-//		}
-

@@ -43,9 +43,10 @@ namespace MvxAdvancedPresenter.Touch
 		}
 
 		public void SwapPresenter(BaseTouchViewPresenter newPresenter, MvxViewModelRequest view) {
-			newPresenter.Present(_window, view, CurrentPresenter);
-			if (CurrentPresenter != null) { CurrentPresenter.Dispose(); }
-			CurrentPresenter = newPresenter;
+			newPresenter.Present(_window, view, CurrentPresenter, () => {
+				if (CurrentPresenter != null) { CurrentPresenter.Dispose(); }
+				CurrentPresenter = newPresenter;
+			});
 		}
 
 		public override void Show (MvxViewModelRequest request)

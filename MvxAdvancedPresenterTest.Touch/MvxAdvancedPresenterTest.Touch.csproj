@@ -26,6 +26,8 @@
     <MtouchI18n>
     </MtouchI18n>
     <MtouchArch>i386</MtouchArch>
+    <MtouchProfiling>true</MtouchProfiling>
+    <MtouchUseSGen>true</MtouchUseSGen>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>full</DebugType>

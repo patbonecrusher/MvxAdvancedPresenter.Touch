@@ -9,7 +9,7 @@ using MvxAdvancedPresenter.Touch.Attributes;
 namespace MvxAdvancedPresenterTest.Touch.Views
 {
     [Register("FirstView")]
-	[PresenterAttribute(typeof(MvxAdvancedPresenter.Touch.SingleViewPresenter))]
+	[PresenterAttribute(typeof(MvxAdvancedPresenter.Touch.SingleViewPresenter), TransitionType = typeof(FadeTransition))]
     public class FirstView : MvxViewController
     {
         public override void ViewDidLoad()
