@@ -28,10 +28,8 @@ using MvxAdvancedPresenter.Touch.Transition;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
-	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter, IDisposable
+	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter
 	{
-		private bool _disposed = false;
-
 		public UIViewController RootViewController { get; protected set; }
 		public UIViewControllerAnimatedTransitioning Transition { get; set; }
 
@@ -55,12 +53,16 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		{
 			window.RootViewController = RootViewController;
 			window.Add(RootViewController.View);
+			OnAttachedToWindow(window);
+
 		}
 
 		public virtual void DetachFromWindow ()
 		{
+			UIWindow window = RootViewController.View.Superview as UIWindow;
 			RootViewController.View.RemoveFromSuperview();
 			RootViewController.RemoveFromParentViewController();
+			OnDetachedFromWindow(window);
 		}
 
 		public virtual void Present(UIWindow inWindow, MvxViewModelRequest withRequest, BaseTouchViewPresenter fromViewPresenter, Action presented)
@@ -86,7 +88,7 @@ namespace Coc.MvxAdvancedPresenter.Touch
 			presented ();
 		}
 
-		public override void ChangePresentation (Cirrious.MvvmCross.ViewModels.MvxPresentationHint hint)
+		public override void ChangePresentation (MvxPresentationHint hint)
 		{
 			// Analysis disable once CanBeReplacedWithTryCastAndCheckForNull
 			if (hint is MvxClosePresentationHint)
@@ -96,28 +98,9 @@ namespace Coc.MvxAdvancedPresenter.Touch
 			}
 		}
 
-		#region IDisposable implementation
-
-		public virtual void Dispose(bool disposing)
-		{
-			if (!_disposed) {
-				if (disposing) { 
-					RootViewController.View.Dispose(); 
-					RootViewController.Dispose(); 
-				}
-				_disposed = true;
-			}
-		}
-
-		public void Dispose ()
-		{
-			Dispose(true);
-			GC.SuppressFinalize(this);
-		}
-
-		#endregion
-
 		protected virtual void OnRootControllerCreated() {}
+		protected virtual void OnAttachedToWindow(UIWindow window) {}
+		protected virtual void OnDetachedFromWindow(UIWindow window) {}
 		protected virtual UIViewControllerAnimatedTransitioning GetAnimatedTransition() {return Transition;}
 	}
 }

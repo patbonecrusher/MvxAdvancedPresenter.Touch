@@ -36,17 +36,12 @@ namespace Coc.MvxAdvancedPresenter.Touch
 
 		public override void Show (IMvxTouchView view)
 		{
-			//_splitViewController.PushViewController(view as UIViewController, true);
 		}
 
 		protected virtual UISplitViewController CreateSplitViewController(IMvxTouchView view)
 		{
 			UISplitViewController svc = new UISplitViewController();
-			svc.ViewControllers = new UIViewController[] {
-				view as UIViewController,
-				new UIViewController()
-			};
-
+			svc.ViewControllers = new [] { view as UIViewController, new UIViewController() };
 			return svc;
 		}
 

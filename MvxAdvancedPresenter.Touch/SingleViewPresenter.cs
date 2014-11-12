@@ -26,10 +26,6 @@ namespace Coc.MvxAdvancedPresenter.Touch
 {
 	public class SingleViewPresenter : BaseTouchViewPresenter
 	{
-		public SingleViewPresenter () 
-		{
-		}
-
 		public override void ShowFirstView (IMvxTouchView view)
 		{
 			RootViewController = view as UIViewController;
