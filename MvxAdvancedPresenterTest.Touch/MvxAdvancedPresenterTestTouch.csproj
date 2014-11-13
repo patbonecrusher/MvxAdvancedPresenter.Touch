@@ -38,7 +38,7 @@
     <MtouchLink>None</MtouchLink>
     <ConsolePause>false</ConsolePause>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
-    <AssemblyName>MvxAdvancedDispatcherTest.Touch</AssemblyName>
+    <AssemblyName>MvxAdvancedPresenterTestTouch</AssemblyName>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|iPhone' ">
     <DebugSymbols>true</DebugSymbols>

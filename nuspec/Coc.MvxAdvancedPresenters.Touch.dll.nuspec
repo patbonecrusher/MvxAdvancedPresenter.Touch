@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package>
+  <metadata>
+    <id>MvxAdvancedPresenters</id>
+    <version>1.0.1</version>
+	<title>MvxAdvancedPresenters</title>
+    <authors>Patrick Laplante</authors>
+    <owners>Patrick Laplante</owners>
+    <projectUrl>https://github.com/patbonecrusher/MvxAdvancedPresenter.Touch</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Advanced presenter for mvvmcross.  You need mvvmcross.touch installed.</description>
+    <copyright>Copyright 2014 Patrick Laplante</copyright>
+	<licenseUrl>https://raw.githubusercontent.com/patbonecrusher/MvxAdvancedPresenter.Touch/master/LICENSE</licenseUrl>
+	<dependencies>
+			  <dependency id="MvvmCross.HotTuna.CrossCore" version="3.1.1" />
+	</dependencies>
+  </metadata>
+  <files>
+    <file src="../MvxAdvancedPresenter.Touch/bin/Release/Coc.MvxAdvancedPresenters.Touch.dll" target="lib\MonoTouch\Coc.MvxAdvancedPresenters.Touch.dll" />
+  </files>
+</package>
