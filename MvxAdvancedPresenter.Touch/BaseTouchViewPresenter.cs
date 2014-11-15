@@ -51,18 +51,20 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		public abstract void Close(IMvxViewModel viewModel);
 		public virtual void AttachToWindow (UIWindow window)
 		{
+			WillAttachedToWindow(window);
 			window.RootViewController = RootViewController;
 			window.Add(RootViewController.View);
-			OnAttachedToWindow(window);
+			DidAttachedToWindow(window);
 
 		}
 
 		public virtual void DetachFromWindow ()
 		{
 			UIWindow window = RootViewController.View.Superview as UIWindow;
+			WillDetachedFromWindow(window);
 			RootViewController.View.RemoveFromSuperview();
 			RootViewController.RemoveFromParentViewController();
-			OnDetachedFromWindow(window);
+			DidDetachedFromWindow(window);
 		}
 
 		public virtual void Present(UIWindow inWindow, MvxViewModelRequest withRequest, BaseTouchViewPresenter fromViewPresenter, Action presented)
@@ -99,8 +101,10 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		}
 
 		protected virtual void OnRootControllerCreated() {}
-		protected virtual void OnAttachedToWindow(UIWindow window) {}
-		protected virtual void OnDetachedFromWindow(UIWindow window) {}
+		protected virtual void WillAttachedToWindow(UIWindow window) {}
+		protected virtual void DidAttachedToWindow(UIWindow window) {}
+		protected virtual void WillDetachedFromWindow(UIWindow window) {}
+		protected virtual void DidDetachedFromWindow(UIWindow window) {}
 		protected virtual UIViewControllerAnimatedTransitioning GetAnimatedTransition() {return Transition;}
 	}
 }

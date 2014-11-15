@@ -12,6 +12,11 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 	public class FadeTransition : UIViewControllerAnimatedTransitioning
 	{
 		public float Duration = 0.65f;
+		public FadeTransition (float duration)
+		{
+			Duration = duration;
+		}
+
 		public override double TransitionDuration(IUIViewControllerContextTransitioning transitionContext)
 		{
 			return Duration;
@@ -49,7 +54,7 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 				presenter = new SplitViewPresenter();
 			} else {
 				presenter = new NavigationViewPresenter();
-				presenter.Transition = new FadeTransition();
+				presenter.Transition = new FadeTransition(0.25f);
 			}
 			return presenter;
 		}

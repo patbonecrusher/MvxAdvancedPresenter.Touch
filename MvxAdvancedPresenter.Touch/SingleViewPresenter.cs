@@ -28,7 +28,7 @@ namespace Coc.MvxAdvancedPresenter.Touch
 	{
 		public override void ShowFirstView (IMvxTouchView view)
 		{
-			RootViewController = view as UIViewController;
+			RootViewController = CreateRootViewController(view);
 		}
 
 		public override void Show (IMvxTouchView view)
@@ -37,6 +37,11 @@ namespace Coc.MvxAdvancedPresenter.Touch
 
 		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
 		{
+		}
+
+		public virtual UIViewController CreateRootViewController(IMvxTouchView view) 
+		{
+			return view as UIViewController;
 		}
 	}
 }
