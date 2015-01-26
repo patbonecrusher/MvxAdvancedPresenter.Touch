@@ -1,4 +1,4 @@
-﻿// Copyright (C) 20134 Pat Laplante
+// Copyright (C) 20134 Pat Laplante
 //
 // Permission is hereby granted, free of charge, to  any person obtaining a copy 
 // of this software and associated documentation files (the "Software"), to deal 
@@ -20,7 +20,7 @@
 // OR OTHER DEALINGS IN THE SOFTWARE.
 // -----------------------------------------------------------------------------
 using System;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace Coc.MvxAdvancedPresenter.Touch.Attributes
 {

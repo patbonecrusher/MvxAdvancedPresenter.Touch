@@ -1,5 +1,5 @@
-﻿using System;
-using MonoTouch.UIKit;
+using System;
+using UIKit;
 
 namespace MvxAdvancedPresenter.Touch.Transition
 {
@@ -21,7 +21,7 @@ namespace MvxAdvancedPresenter.Touch.Transition
 			_containerView = containerView;
 		}
 
-		public override UIViewController GetViewControllerForKey (MonoTouch.Foundation.NSString uiTransitionKey)
+		public override UIViewController GetViewControllerForKey (Foundation.NSString uiTransitionKey)
 		{
 			if (uiTransitionKey == UITransitionContext.FromViewControllerKey) { return _fromController; }
 			if (uiTransitionKey == UITransitionContext.ToViewControllerKey) { return _toController; }
@@ -39,17 +39,32 @@ namespace MvxAdvancedPresenter.Touch.Transition
 		public override UIModalPresentationStyle PresentationStyle { get { return UIModalPresentationStyle.Custom; } }
 		public override bool TransitionWasCancelled { get { return false; } }
 
-		public override System.Drawing.RectangleF GetFinalFrameForViewController (UIViewController vc)
+		public override CoreGraphics.CGRect GetFinalFrameForViewController (UIViewController vc)
 		{
-			return System.Drawing.RectangleF.Empty;
+			return CoreGraphics.CGRect.Empty;
 		}
 
-		public override System.Drawing.RectangleF GetInitialFrameForViewController (UIViewController vc)
+		public override CoreGraphics.CGRect GetInitialFrameForViewController (UIViewController vc)
 		{
-			return System.Drawing.RectangleF.Empty;
+			return CoreGraphics.CGRect.Empty;
 		}
 
-		public override void UpdateInteractiveTransition (float percentComplete) { }
+		#region implemented abstract members of UIViewControllerContextTransitioning
+
+		public override UIView GetViewFor (Foundation.NSString uiTransitionContextToOrFromKey)
+		{
+			throw new NotImplementedException ();
+		}
+
+		public override CoreGraphics.CGAffineTransform TargetTransform {
+			get {
+				throw new NotImplementedException ();
+			}
+		}
+
+		#endregion
+
+		public override void UpdateInteractiveTransition (nfloat percentComplete) { }
 
 		public override void CancelInteractiveTransition () { }
 

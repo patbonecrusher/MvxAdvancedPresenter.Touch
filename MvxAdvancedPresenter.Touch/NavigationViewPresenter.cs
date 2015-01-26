@@ -20,7 +20,7 @@
 // OR OTHER DEALINGS IN THE SOFTWARE.
 // -----------------------------------------------------------------------------
 using Cirrious.MvvmCross.Touch.Views;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
@@ -42,7 +42,7 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
 		{
 			// TODO Add some check to validate we are closing the right view!
-			_navViewController.PopViewControllerAnimated(true);
+			_navViewController.PopViewController(true);
 		}
 
 		protected virtual UINavigationController CreateNavController(IMvxTouchView view)

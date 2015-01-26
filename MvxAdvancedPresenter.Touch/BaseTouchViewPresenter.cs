@@ -22,7 +22,7 @@
 using Cirrious.MvvmCross.Touch.Views;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
-using MonoTouch.UIKit;
+using UIKit;
 using System;
 using MvxAdvancedPresenter.Touch.Transition;
 

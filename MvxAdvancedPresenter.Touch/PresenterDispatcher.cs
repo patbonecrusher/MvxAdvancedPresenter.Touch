@@ -26,7 +26,7 @@ using Cirrious.MvvmCross.Touch.Platform;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
-using MonoTouch.UIKit;
+using UIKit;
 using Coc.MvxAdvancedPresenter.Touch.Attributes;
 
 namespace Coc.MvxAdvancedPresenter.Touch

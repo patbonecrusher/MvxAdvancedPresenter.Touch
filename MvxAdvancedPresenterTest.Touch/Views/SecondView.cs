@@ -1,10 +1,10 @@
-﻿using System;
+using System;
 using Cirrious.MvvmCross.Touch.Views;
-using MonoTouch.CoreGraphics;
-using MonoTouch.UIKit;
+using CoreGraphics;
+using UIKit;
 using Coc.MvxAdvancedPresenter.Touch;
 using Coc.MvxAdvancedPresenter.Touch.Attributes;
-using System.Drawing;
+using CoreGraphics;
 using Cirrious.MvvmCross.Binding.BindingContext;
 
 namespace MvxAdvancedPresenterTest.Touch.Views
@@ -72,8 +72,8 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 			base.ViewDidLoad ();
 			View.BackgroundColor = UIColor.Purple;
 
-			UIButton button = new UIButton(new RectangleF(10, 90, 300, 40));
-			button.SetTitle("Logon!", UIControlState.Normal);
+			UIButton button = new UIButton(new CGRect(10, 90, 300, 40));
+			button.SetTitle("Logoff!", UIControlState.Normal);
 			button.SetTitleColor(UIColor.Black, UIControlState.Normal);
 			Add(button);
 

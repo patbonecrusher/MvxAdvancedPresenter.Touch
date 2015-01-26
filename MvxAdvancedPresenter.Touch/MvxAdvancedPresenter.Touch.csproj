@@ -3,12 +3,14 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectTypeGuids>{6BC8ED88-2882-458C-8E55-DFD12B67127B};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{FEACFBD2-3405-455C-9665-78FE426C6842};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <ProjectGuid>{212E8AE0-DA29-47FF-97BC-488321F2450B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Coc.MvxAdvancedPresenter.Touch</RootNamespace>
     <IPhoneResourcePrefix>Resources</IPhoneResourcePrefix>
     <AssemblyName>Coc.MvxAdvancedPresenters.Touch</AssemblyName>
+    <TargetFrameworkIdentifier>Xamarin.iOS</TargetFrameworkIdentifier>
+    <TargetFrameworkVersion>v1.0</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,42 +34,42 @@
     <Reference Include="System" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
-    <Reference Include="monotouch" />
-    <Reference Include="Cirrious.CrossCore.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.2.1\lib\MonoTouch\Cirrious.CrossCore.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.CrossCore">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.2.1\lib\MonoTouch\Cirrious.CrossCore.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Binding">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.Binding.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Localization">
-      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.Localization.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross">
-      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.Dialog.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.Touch.Dialog.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
-    </Reference>
-    <Reference Include="Cirrious.MvvmCross.AutoView">
-      <HintPath>..\packages\MvvmCross.HotTuna.AutoViews.3.2.1\lib\portable-win+net45+wp8+win8+wpa81+MonoTouch+MonoAndroid\Cirrious.MvvmCross.AutoView.dll</HintPath>
-    </Reference>
-    <Reference Include="CrossUI.Core">
-      <HintPath>..\packages\MvvmCross.HotTuna.AutoViews.3.2.1\lib\portable-win+net45+wp8+win8+wpa81+MonoTouch+MonoAndroid\CrossUI.Core.dll</HintPath>
-    </Reference>
     <Reference Include="Cirrious.MvvmCross.AutoView.Touch">
       <HintPath>..\packages\MvvmCross.HotTuna.Touch.AutoViews.3.2.1\lib\MonoTouch\Cirrious.MvvmCross.AutoView.Touch.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.iOS" />
+    <Reference Include="Cirrious.CrossCore.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\Xamarin.iOS10\Cirrious.CrossCore.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.Binding.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.CrossCore">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\Xamarin.iOS10\Cirrious.CrossCore.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Binding">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.Binding.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Localization">
+      <HintPath>..\packages\MvvmCross.HotTuna.CrossCore.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.Localization.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross">
+      <HintPath>..\packages\MvvmCross.HotTuna.MvvmCrossLibraries.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.dll</HintPath>
+    </Reference>
     <Reference Include="CrossUI.Touch">
-      <HintPath>..\packages\MvvmCross.HotTuna.Touch.AutoViews.3.2.1\lib\MonoTouch\CrossUI.Touch.dll</HintPath>
+      <HintPath>..\packages\MvvmCross.HotTuna.Touch.Dialog.3.5.0\lib\Xamarin.iOS10\CrossUI.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.Dialog.Touch">
+      <HintPath>..\packages\MvvmCross.HotTuna.Touch.Dialog.3.5.0\lib\Xamarin.iOS10\Cirrious.MvvmCross.Dialog.Touch.dll</HintPath>
+    </Reference>
+    <Reference Include="Cirrious.MvvmCross.AutoView">
+      <HintPath>..\packages\MvvmCross.HotTuna.AutoViews.3.5.0\lib\portable-win+net45+wp8+win8+wpa81\Cirrious.MvvmCross.AutoView.dll</HintPath>
+    </Reference>
+    <Reference Include="CrossUI.Core">
+      <HintPath>..\packages\MvvmCross.HotTuna.AutoViews.3.5.0\lib\portable-win+net45+wp8+win8+wpa81\CrossUI.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -85,7 +87,6 @@
     <Compile Include="NavigationViewPresenter.cs" />
     <Compile Include="Transition\ViewControllerContextTransitioning.cs" />
   </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.MonoTouch.CSharp.targets" />
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
@@ -98,4 +99,5 @@
       </Properties>
     </MonoDevelop>
   </ProjectExtensions>
+  <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

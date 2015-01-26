@@ -20,7 +20,7 @@
 // OR OTHER DEALINGS IN THE SOFTWARE.
 // -----------------------------------------------------------------------------
 using Cirrious.MvvmCross.Touch.Views;
-using MonoTouch.UIKit;
+using UIKit;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
