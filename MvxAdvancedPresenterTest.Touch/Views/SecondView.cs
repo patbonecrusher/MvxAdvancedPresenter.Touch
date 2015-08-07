@@ -42,6 +42,10 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 
 	public class SecondViewPresenter : PresenterAttribute
 	{
+		~SecondViewPresenter ()
+		{
+			Console.WriteLine ("ljhhk");
+		}
 		public SecondViewPresenter ()
 		{
 			
@@ -60,11 +64,17 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 		}
 	}
 
-	[SecondViewPresenter()]
+//	[SecondViewPresenter()]
+	[Presenter(typeof(Coc.MvxAdvancedPresenter.Touch.NavigationViewPresenter))]
 	public class SecondView : MvxViewController
 	{
 		public SecondView ()
 		{
+		}
+
+		~SecondView ()
+		{
+			Console.WriteLine ("Secondview killed");
 		}
 
 		public override void ViewDidLoad ()
@@ -77,8 +87,14 @@ namespace MvxAdvancedPresenterTest.Touch.Views
 			button.SetTitleColor(UIColor.Black, UIControlState.Normal);
 			Add(button);
 
+			UIButton button2 = new UIButton(new CGRect(10, 190, 300, 40));
+			button2.SetTitle("garbage collec!", UIControlState.Normal);
+			button2.SetTitleColor(UIColor.Black, UIControlState.Normal);
+			Add(button2);
+
 			var set = this.CreateBindingSet<SecondView, Core.ViewModels.SecondViewModel>();
 			set.Bind(button).To(vm => vm.LogoffCommand);
+			set.Bind(button2).To(vm => vm.GarbageCommand);
 			set.Apply();
 
 		}

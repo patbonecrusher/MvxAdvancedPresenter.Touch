@@ -48,5 +48,11 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
 		{
 		}
+
+		protected override void DidDetachedFromWindow (UIWindow window)
+		{
+			_splitViewController.Dispose();
+			base.DidDetachedFromWindow (window);
+		}
 	}
 }

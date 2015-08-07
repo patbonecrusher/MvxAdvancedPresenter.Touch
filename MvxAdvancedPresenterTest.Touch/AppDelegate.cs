@@ -13,6 +13,7 @@ namespace MvxAdvancedPresenterTest.Touch
 
 		public override bool FinishedLaunching (UIApplication app, NSDictionary options)
 		{
+			Xamarin.Insights.Initialize("239066cb351ed2d5ed2cfcf9c5875fb05ad27300");
 			_window = new UIWindow (UIScreen.MainScreen.Bounds);
 
 			var setup = new Setup(this, new Coc.MvxAdvancedPresenter.Touch.PresenterDispatcher (this, _window));

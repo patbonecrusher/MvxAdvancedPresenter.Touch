@@ -21,13 +21,16 @@
 // -----------------------------------------------------------------------------
 using System;
 using System.Linq;
+
 using Cirrious.CrossCore;
 using Cirrious.MvvmCross.Touch.Platform;
 using Cirrious.MvvmCross.Touch.Views.Presenters;
 using Cirrious.MvvmCross.ViewModels;
 using Cirrious.MvvmCross.Views;
-using UIKit;
+
 using Coc.MvxAdvancedPresenter.Touch.Attributes;
+
+using UIKit;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
@@ -42,7 +45,10 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		}
 
 		public void SwapPresenter(BaseTouchViewPresenter newPresenter, MvxViewModelRequest view) {
-			newPresenter.Present(_window, view, CurrentPresenter, () => { CurrentPresenter = newPresenter; });
+			newPresenter.Present(_window, view, CurrentPresenter, () => { 
+				if (CurrentPresenter != null) { CurrentPresenter.Dispose(); CurrentPresenter = null; }
+				CurrentPresenter = newPresenter;
+			});
 		}
 
 		public override void Show (MvxViewModelRequest request)
@@ -51,10 +57,12 @@ namespace Coc.MvxAdvancedPresenter.Touch
 			var presenterFactory = GetPresenter(viewType);
 
 			if (presenterFactory != null) {
-				var newPresenter = presenterFactory.CreatePresenter();
-				SwapPresenter(newPresenter, request);
+				if (CurrentPresenter == null || !CurrentPresenter.IsPresentingSameViewModel(request.ViewModelType))
+				{
+					var newPresenter = presenterFactory.CreatePresenter();
+					SwapPresenter(newPresenter, request);
+				}
 			} else {
-				// TODO throw up if Current presenter is null
 				CurrentPresenter.Show(request);
 			}
 		}

@@ -5,15 +5,18 @@ namespace MvxAdvancedPresenterTest.Core.ViewModels
 {
 	public class SecondViewModel : MvxViewModel
 	{
-		private IMvxCommand _logoffCommand;
-		public IMvxCommand LogoffCommand {
-			get { return _logoffCommand; }
-			set { _logoffCommand = value; RaisePropertyChanged (() => LogoffCommand); }
-		}
+		public IMvxCommand LogoffCommand { get; set; }
+		public IMvxCommand GarbageCommand { get; set; }
 
 		public SecondViewModel ()
 		{
-			_logoffCommand = new MvxCommand(() => ShowViewModel<FirstViewModel>());
+			LogoffCommand = new MvxCommand(() => ShowViewModel<FirstViewModel>());
+			GarbageCommand = new MvxCommand(() => {
+				#if DEBUG
+				GC.Collect(); 
+				GC.WaitForPendingFinalizers();
+				#endif
+			});
 		}
 	}
 }

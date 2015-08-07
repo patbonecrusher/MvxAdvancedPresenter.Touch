@@ -21,13 +21,13 @@
 // -----------------------------------------------------------------------------
 using Cirrious.MvvmCross.Touch.Views;
 using UIKit;
+using System.Linq;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
 	public class NavigationViewPresenter : BaseTouchViewPresenter
 	{
 		private UINavigationController _navViewController;
-
 		public override void ShowFirstView (IMvxTouchView view)
 		{
 			_navViewController = CreateNavController(view);
@@ -41,7 +41,6 @@ namespace Coc.MvxAdvancedPresenter.Touch
 
 		public override void Close (Cirrious.MvvmCross.ViewModels.IMvxViewModel viewModel)
 		{
-			// TODO Add some check to validate we are closing the right view!
 			_navViewController.PopViewController(true);
 		}
 
@@ -49,5 +48,20 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		{
 			return new UINavigationController(view as UIViewController);
 		}
+
+		public override bool IsPresentingSameViewModel (System.Type vmType)
+		{
+			if (_navViewController.TopViewController == null) { return false; }
+
+			return ((IMvxTouchView)_navViewController.TopViewController).ViewModel.GetType() == vmType;
+		}
+
+        protected override void WillDetachedFromWindow (UIWindow window)
+        {
+            _navViewController.ViewControllers.ToList().ForEach(vc => vc.RemoveFromParentViewController ());
+            _navViewController.ViewControllers = new UIViewController[] {};
+            base.WillDetachedFromWindow(window);
+        }
+
 	}
 }

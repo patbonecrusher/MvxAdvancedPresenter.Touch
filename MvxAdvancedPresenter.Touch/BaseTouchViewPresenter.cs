@@ -28,10 +28,12 @@ using MvxAdvancedPresenter.Touch.Transition;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
-	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter
+	public abstract class BaseTouchViewPresenter : MvxBaseTouchViewPresenter, IDisposable
 	{
 		public UIViewController RootViewController { get; protected set; }
 		public UIViewControllerAnimatedTransitioning Transition { get; set; }
+
+		private bool _disposed = false;
 
 		public abstract void ShowFirstView (IMvxTouchView view);
 		public virtual void ShowFirstView (MvxViewModelRequest request)
@@ -62,9 +64,14 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		{
 			UIWindow window = RootViewController.View.Superview as UIWindow;
 			WillDetachedFromWindow(window);
-			RootViewController.View.RemoveFromSuperview();
-			RootViewController.RemoveFromParentViewController();
+//			RootViewController.View.RemoveFromSuperview();
+//			RootViewController.RemoveFromParentViewController();
 			DidDetachedFromWindow(window);
+		}
+
+		public virtual bool IsPresentingSameViewModel(Type vmType)
+		{
+			return false;
 		}
 
 		public virtual void Present(UIWindow inWindow, MvxViewModelRequest withRequest, BaseTouchViewPresenter fromViewPresenter, Action presented)
@@ -99,6 +106,20 @@ namespace Coc.MvxAdvancedPresenter.Touch
 				return;
 			}
 		}
+
+		public void Dispose () {
+			Dispose(true);
+			//GC.SuppressFinalize(this);
+		}
+
+		protected virtual void Dispose(bool isDisposing) {
+			if (_disposed) { return; }
+			if (isDisposing) { FreeManagedResources(); _disposed = true; }
+			FreeNativeResources();
+		}
+
+		protected virtual void FreeManagedResources () {}
+		protected virtual void FreeNativeResources () {}
 
 		protected virtual void OnRootControllerCreated() {}
 		protected virtual void WillAttachedToWindow(UIWindow window) {}

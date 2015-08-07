@@ -21,6 +21,7 @@
 // -----------------------------------------------------------------------------
 using Cirrious.MvvmCross.Touch.Views;
 using UIKit;
+using System;
 
 namespace Coc.MvxAdvancedPresenter.Touch
 {
@@ -43,5 +44,20 @@ namespace Coc.MvxAdvancedPresenter.Touch
 		{
 			return view as UIViewController;
 		}
+
+		public override bool IsPresentingSameViewModel (System.Type vmType)
+		{
+			if (RootViewController == null) { return false; }
+
+			return ((IMvxTouchView)RootViewController).ViewModel.GetType() == vmType;
+		}
+
+//		protected override void FreeManagedResources ()
+//		{
+//			RootViewController.Dispose();
+//			RootViewController = null;
+//
+//			base.FreeManagedResources ();
+//		}
 	}
 }
